@@ -36,6 +36,9 @@
     <script type="text/javascript"
         src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-y/izitoast/1.4.0/js/iziToast.min.js">
     </script>
+    <!-- Search Box -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.1.2/css/all.min.css">
     <!-- Aplayer -->
@@ -92,6 +95,42 @@
         <div id="g-pointer-2"></div>
         <!-- 主体内容 -->
         <main id="main" class="main">
+            <!-- 搜索框 -->
+            <div class="close-btn">
+                <span class="fas fa-times"></span>
+            </div>
+            <div class="search-btn">
+                <span class="fas fa-search"></span>
+            </div>
+            <div class="search-data">
+                <input type="text" required>
+                <div class="line"></div>
+                <label>Type to search...(还未添加点击和搜索引擎)</label>
+                <span class="fas fa-search"></span>
+            </div>
+
+            <script>
+                $(".search-btn").click(function(){
+                    $(this).css("display","none");
+                    $(".search-data").fadeIn(500);
+                    $(".close-btn").fadeIn(500);
+                    $(".search-data .line").addClass("active");
+                    setTimeout(function(){
+                        $("input").focus();
+                        $(".search-data label").fadeIn(500);
+                        $(".search-data span").fadeIn(500);
+                    }, 800);
+                });
+                $(".close-btn").click(function(){
+                    $(".search-btn").fadeIn(800);
+                    $(".search-data").fadeOut(500);
+                    $(".close-btn").fadeOut(500);
+                    $(".search-data .line").removeClass("active");
+                    $("input").val("");
+                    $(".search-data label").fadeOut(500);
+                    $(".search-data span").fadeOut(500);
+                });
+            </script>
             <div class="container" id="container">
                 <div class="row" id="row">
                     <div class="col left">
@@ -380,7 +419,7 @@
                             <div class="img-title">
                                 <span class="img-title-big" id="logo-title-other">南淮花酱</span>
                                 <span class="img-text" id="logo-title-other-small">.io</span><br />
-                                <span class="img-text">&nbsp;v&nbsp;1.0</span>
+                                <span class="img-text">&nbsp;v&nbsp;1.1</span>
                                 <a href="https://github.com/hsBUPT" target="_blank">
                                     <i class="fa-brands fa-github"></i>
                                 </a>
@@ -438,6 +477,9 @@
                                         aria-labelledby="headingTwo" data-bs-parent="#accordion">
                                         <div class="accordion-body">
                                             <div class="upnote">
+                                                <span class="uptext">
+                                                    <i class="fa-solid fa-circle-plus"></i>&nbsp;添加搜索框及动画css样式
+                                                </span>
                                                 <span class="uptext">
                                                     <i class="fa-solid fa-circle-plus"></i>&nbsp;音乐歌单支持快速自定义
                                                 </span>
