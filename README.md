@@ -13,3 +13,9 @@
 ![search-btn](https://img1.imgtp.com/2023/06/03/7iz95ogk.png)
 
 ![search-line](https://img1.imgtp.com/2023/06/03/bG5fqM9L.png)
+
+### Tips
+
+**After I add the search engine, I can set this Demo as the browser home page through the edge Settings.**
+
+![](https://img1.imgtp.com/2023/06/03/GSytnrP1.png)
