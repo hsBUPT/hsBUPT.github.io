@@ -73,6 +73,114 @@ a:hover {
     margin: 14px 0px;
 }
 
+/*搜索框样式*/
+.search-data{
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.search-btn{
+    z-index: 99;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    height: 60px;
+    width: 60px;
+    line-height: 60px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 50%;
+    background: linear-gradient(-135deg, #c850c0, #4158d0);
+}
+
+.search-btn span{
+    z-index: 99;
+    color: #fff;
+    font-size: 22px;
+    line-height: 60px;
+}
+
+.search-data{
+    z-index: 99;
+    position: absolute;
+    height: 50px;
+    width: 400px;
+    display: flex;
+    text-align: center;
+    /*display: none;*/
+}
+
+.search-data input{
+    z-index: 99;
+    height: 100%;
+    width: 100%;
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 22px;
+    font-weight: 500;
+    color: #fff;
+}
+
+.search-data .line{
+    z-index: 99;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background: #fff;
+    bottom: -10px;
+    transform: scaleX(0);
+    transition: transform 0.4s 0.3s linear;
+}
+
+.search-data .line.active{
+    transform: scaleX(1);
+}
+
+.search-data label{
+    z-index: 99;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    font-size: 20px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: rgba(255,255,255,0.7);
+}
+
+.search-data input:valid ~ label{
+    opacity: 0;
+}
+
+.search-data span{
+    z-index: 99;
+    color: #fff;
+    position: absolute;
+    width: 50px;
+    font-size: 25px;
+    right: 0;
+    top: 0;
+    line-height: 45px;
+    cursor: pointer;
+}
+
+.close-btn{
+    position: absolute;
+    z-index: 99;
+    right: 25px;
+    top: 25px;
+    font-size: 25px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.search-data, .search-data span,
+.search-data label, .close-btn{
+    display: none;
+}
+
 /*鼠标样式*/
 #g-pointer-1 {
     display: none;
