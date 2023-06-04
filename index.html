@@ -103,11 +103,31 @@
                 <span class="fas fa-search"></span>
             </div>
             <div class="search-data">
-                <input type="text" required>
+                <input type="text" id="inp" required/>
                 <div class="line"></div>
-                <label>Type to search...(还未添加点击和搜索引擎)</label>
-                <span class="fas fa-search"></span>
+                <label>Type to search...</label>
+                <span class="fas fa-search" id="btn"></span>
             </div>
+
+            <script>
+                var oInp = document.getElementById('inp');
+                var oBtn = document.getElementById('btn');
+            
+                oBtn.onclick = function () {
+                    Search();
+                }
+            
+                document.onkeydown = function () {
+                    if (event.keyCode == 13) {
+                        Search();
+                    }
+                }
+            
+                function Search() {
+                    var url = 'https://cn.bing.com/search?q=' + oInp.value;
+                    window.open(url,'_self');
+                }
+            </script>
 
             <script>
                 $(".search-btn").click(function(){
