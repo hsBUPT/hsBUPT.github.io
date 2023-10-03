@@ -16,6 +16,6 @@
 
 ### Tips
 
-**After I add the search engine, I can set this Demo as the browser home page through the edge Settings.**
+**After I add the search engine, You can set this Demo as the browser home page through the edge Settings.**
 
 ![](https://img1.imgtp.com/2023/06/03/GSytnrP1.png)
