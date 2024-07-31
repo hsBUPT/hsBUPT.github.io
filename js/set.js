@@ -28,44 +28,63 @@ function getBgImg() {
 }
 
 function setBgImgDefault() {
-  const imgIndex = 1 + ~~(Math.random() * 10);
-  console.log(imgIndex);
-  const imgUrl = `./img/background${imgIndex}.webp`;
+  let imgIndex = 1 + ~~(Math.random() * 10);
+  // console.log(imgIndex);
+  let imgUrl = `./img/background${imgIndex}.webp`;
+  let attempts = 0;
+  const maxAttempts = 3;
 
-  const img = new Image();
-  img.src = imgUrl;
-
-  if (img.complete && img.naturalWidth !== 0) {
-    return imgUrl;
-  } else {
-    return "./img/background1.webp"
+  // 避免重复随机到同一张图片
+  // 前提是背景图片有多张
+  let bg_img = getBgImg();
+  console.log(bg_img[1])
+  while (attempts++ < maxAttempts) {
+    console.log(attempts);
+    if (bg_img[1] === imgUrl) {
+      imgIndex = 1 + ~~(Math.random() * 10);
+      imgUrl = `./img/background${imgIndex}.webp`;
+    } else {
+      bg_img[1] = imgUrl;
+      setBgImg(bg_img);
+      console.log(imgUrl);
+      break;
+    }
   }
 
-  // img.onload = function () {
-  //   // 图片存在，设置为背景
-  //   // $("body").css(
-  //   //   "background-image",
-  //   //   `url("./img/background${imgIndex}.webp")`);
-  //   return `./img/background${imgIndex}.webp`;
-  // }
+  return (callback) => {
+    const img = new Image();
 
-  // img.onerror = function () {
-  //   // 图片不存在，设置默认背景
-  //   // $("body").css(
-  //   //   "background-image",
-  //   //   `url(${bg_img_preinstall[1]})`,
-  //   // );
-  //   return `./img/background1.webp`;
-  // }
+    img.onload = () => {
+      if (img.naturalWidth !== 0) {
+        callback(imgUrl); // 图片加载成功，调用回调函数并传入图片URL
+      } else {
+        callback("./img/background1.webp"); // 使用默认图片URL
+      }
+    };
+
+    img.onerror = () => {
+      callback("./img/background1.webp"); // 图片加载失败，使用默认图片URL
+    };
+
+    img.src = imgUrl;
+  }
 }
 
 let bg_img_preinstall = {
   type: "1", // 1:默认背景 2:每日一图 3:随机风景 4:随机动漫
-  1: setBgImgDefault(), // 默认背景
+  1: "./img/background1.webp", // 默认背景
   2: "https://api.dujin.org/bing/1920.php", // 每日一图
   3: "https://api.btstu.cn/sjbz/api.php?lx=fengjing&format=images", // 随机风景
   4: "https://www.dmoe.cc/random.php", // 随机动漫
 };
+
+// 随机默认壁纸url加载
+if (getBgImg()["type"] === "1") {
+  setBgImgDefault()((imgUrl) => {
+    console.log(imgUrl);
+    bg_img_preinstall[1] = imgUrl;
+  });
+}
 
 // 更改背景图片
 function setBgImgInit() {
