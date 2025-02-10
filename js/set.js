@@ -41,7 +41,7 @@ function setBgImgDefault() {
   while (attempts++ < maxAttempts) {
     console.log(attempts);
     if (bg_img[1] === imgUrl) {
-      imgIndex = 1 + ~~(Math.random() * 10);
+      imgIndex = 1 + ~~(Math.random() * 3);
       imgUrl = `./img/background${imgIndex}.webp`;
     } else {
       bg_img[1] = imgUrl;
