@@ -28,7 +28,7 @@ function getBgImg() {
 }
 
 function setBgImgDefault() {
-  let imgIndex = 1 + ~~(Math.random() * 10);
+  let imgIndex = 1 + ~~(Math.random() * 3); //3为图片数量
   // console.log(imgIndex);
   let imgUrl = `./img/background${imgIndex}.webp`;
   let attempts = 0;
